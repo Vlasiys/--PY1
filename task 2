@@ -18,17 +18,18 @@ class Book:
         self.name = name
         self.pages = pages
 
-    def __str__(self) -> str:
+    def __str__(self):
+
         return f'Книга "{self.name}"'
 
-    def __repr__(self) -> str:
-        return f'Book(id_={self.id_!r}, name={self.name!r}, pages={self.pages!r})'
+    def __repr__(self):
+
+        return f'Book(id_={self.id_}, name={self.name!r}, pages={self.pages})'
+# TODO написать класс Book
 
 
-class Library:
+class Library:       # TODO написать класс Library
     def __init__(self, books=None):
-        if books is None:
-            books = []
         if books is None:
             self.books = []
         else:
@@ -38,14 +39,14 @@ class Library:
         if not self.books:
             return 1
         else:
-            return self.books[1].id_ + 1
+            return self.books[-1].id_ + 1
 
-    def get_index_by_book_id(self, id_: int):
-        for i, books in enumerate(self.books):
-            if books.id_ == id_:
+    def get_index_by_book_id(self, id__):
+
+        for i, book in enumerate(self.books):
+            if id__ == book.id_:
                 return i
-        if not self.books:
-            raise ValueError("Книги с запрашиваемым id не существует")
+        raise ValueError("Книги с запрашиваемым ID не существует")
 
 
 if __name__ == '__main__':
